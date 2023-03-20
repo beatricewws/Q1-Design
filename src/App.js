@@ -1,12 +1,17 @@
 import React from 'react';
 import Sidebar from './components/Sidebar';
 import MainContent from './pages/MainContent';
+import './App.css';
 
 function NavBar() {
   return (
     <div className="container">
-      <Sidebar />
-      <MainContent />
+      <div class="box">
+        <Sidebar />
+      </div>
+      <div class="box">
+        <MainContent />
+      </div>
     </div>
   );
 }
