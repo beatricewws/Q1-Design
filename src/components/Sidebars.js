@@ -1,15 +1,15 @@
 import React from 'react';
 
 const Sidebar = () => {
-  return (
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  );
-};
+    return (
+      <div className="navigation">
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+        </ul>
+      </div>
+    );
+  };
 
-export default Sidebar;
+  export default Sidebar;
