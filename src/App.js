@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './components/Sidebar';
 import MainContent from './pages/MainContent';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
   return <div className="header">Header</div>;
