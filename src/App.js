@@ -5,7 +5,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
-  return <div className="header">Header</div>;
+  return (
+    <div className="header">
+      <img src="./logo.png" alt="MCA logo" />
+    </div>
+  );
 };
 
 const App = () => {
