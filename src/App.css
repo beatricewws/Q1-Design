@@ -92,12 +92,21 @@ NavLink.active {
 }
 
 .header {
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+}
+
+.header1 {
+  background-color: #fff;
+  color: #333;
+  height: 50px;
+  display: flex;
+  align-items: right;
+  justify-content: right;
 }
 
 .main {
@@ -117,13 +126,70 @@ NavLink.active {
 
 .left {
   flex: 1;
-  background-color: #ccc;
+  background-color: #f1f1f1;
   padding: 20px;
 }
 
 .right {
   flex: 1;
-  background-color: #ddd;
+  background-color: #f1f1f1;
   padding: 20px;
 }
 
+.login {
+  flex: 1;
+  display: flex;
+}
+
+.heading {
+  font-size: 24px;
+}
+
+.label {
+  display: none;
+}
+
+.border {
+  border-style: solid;
+  border-color: rgb(193, 179, 179);
+}
+
+.navigation1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation1 li {
+  margin: 0;
+}
+
+.navigation1 button {
+  background-color: white; 
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.navigation1 button:hover {
+  background-color: black; 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 0;
+  cursor: pointer;
+}
