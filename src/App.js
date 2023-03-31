@@ -11,7 +11,9 @@ const App = () => {
       <Header />
       <div className="main">
         <Sidebar />
-        <MainContent />
+        <div className="login">
+          <MainContent />
+        </div>
       </div>
     </div>
   );
