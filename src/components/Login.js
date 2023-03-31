@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RememberMe from './RememberMe';
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -20,13 +21,14 @@ function Login() {
     <h1 className="heading">Login</h1><br/>
     <div className="border">
       <label>
-        Email:
+        Username or email address *
         <br/><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </label><br/>
       <label>
-        Password:
+        Password *
         <br/><input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </label><br/>
+      <RememberMe />
       <button type="submit">Login</button>
     </div>
     </form>
@@ -53,7 +55,7 @@ function Register() {
     <h1 className="heading">Register</h1><br/>
     <div className="border">
       <label>
-        Email:
+        Email address *
         <br/><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </label>
       <label className="label">
