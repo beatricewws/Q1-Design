@@ -1,10 +1,11 @@
 import React from 'react';
+import { Login, Register } from '../components/Login';
 
 const MainContent = () => {
     return (
         <div className="content">
-          <div className="left">Left Content</div>
-          <div className="right">Right Content</div>
+          <div className="left"><Login /></div>
+          <div className="right"><Register /></div>
         </div>
     );
   };
