@@ -17,15 +17,18 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
+    <h1 className="heading">Login</h1><br/>
+    <div className="border">
       <label>
         Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
+        <br/><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </label><br/>
       <label>
         Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
+        <br/><input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label><br/>
       <button type="submit">Login</button>
+    </div>
     </form>
   );
 }
@@ -47,15 +50,18 @@ function Register() {
 
   return (
     <form onSubmit={handleSubmit}>
+    <h1 className="heading">Register</h1><br/>
+    <div className="border">
       <label>
         Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <br/><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </label>
-      <label>
+      <label className="label">
         Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
+        <br/><input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label><br/>
       <button type="submit">Register</button>
+    </div>
     </form>
   );
 }
