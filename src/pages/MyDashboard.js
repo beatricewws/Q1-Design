@@ -1,6 +1,7 @@
 import React, { useState }from 'react';
 import MyCar from '../components/MyCar.js';
 import TextBox from '../components/Textbox.js';
+import CountdownBar from '../components/CountdownBar.js';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -69,11 +70,9 @@ const MyDashboard = () => {
             <RoundRectangle color="darkgrey" text="" style={{marginTop: "-50px"}} >
               <p>MINI VIP</p>
             </RoundRectangle><br/>
-          
-              <RoundRectangle color="#E9C656" text="" display="inline-block" onClick={handleCardClick}>
-                <p>MY CARD</p>
-              </RoundRectangle>
-            
+            <RoundRectangle color="#E9C656" text="" display="inline-block" onClick={handleCardClick}>
+              <p>MY CARD</p>
+            </RoundRectangle>
             <RoundRectangle color="grey" text="" display="inline-block">
               <p>REWARD POINTS: 250</p>
             </RoundRectangle><br/>
@@ -88,6 +87,8 @@ const MyDashboard = () => {
                 <p>MEMBER SINCE 01/01/1970</p>
               </RoundRectangle2>
             )}
+            <h1>Countdown to a new Entry</h1>
+            <CountdownBar  />
           </div>
         <MyCar />
         </div>
