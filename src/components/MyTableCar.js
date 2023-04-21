@@ -9,7 +9,7 @@ const TableWrapper = styled.div`
 const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   border: 1px solid #ddd;
 `;
@@ -32,28 +32,67 @@ const TableData = styled.td`
   text-align: left;
 `;
 
+const Button = styled.button`
+  background-color: #E9C656;
+  border: none;
+  color: black;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
+const ImageWrapper = styled.div`
+  width: 250px;
+  height: auto;
+  padding-bottom: 75%;
+  position: relative;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+`;
+
 function MyTableCar(props) {
   return (
-    <TableWrapper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableData>Name</TableData>
-            <TableData>Age</TableData>
-            <TableData>Occupation</TableData>
-          </TableRow>
-        </TableHead>
-        <tbody>
-          {props.data.map((row, index) => (
-            <TableRow key={index}>
-              <TableData>{row.name}</TableData>
-              <TableData>{row.age}</TableData>
-              <TableData>{row.occupation}</TableData>
+    <div>
+      <h2>{props.title}</h2>
+      <p>{props.content}</p>
+      <TableWrapper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableData></TableData>
+              <TableData>Once</TableData>
+              <TableData>Vip</TableData>
+              <TableData>Total</TableData>
             </TableRow>
-          ))}
-        </tbody>
-      </Table>
+          </TableHead>
+          <tbody>
+            {props.data.map((row, index) => (
+              <TableRow key={index}>
+                <TableData><ImageWrapper><Image src={`/${row.photo}`} alt={props.title} /></ImageWrapper></TableData>
+                <TableData>
+                  {row.once}<br/>
+                  {row.once > 0 ? row.once :
+                    <Button onClick={() => console.log('Once button clicked')}>Enter Now</Button>
+                  }
+                </TableData>
+                <TableData>{row.vip}</TableData>
+                <TableData>{row.total}</TableData>
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
     </TableWrapper>
+  </div>
   );
 }
 
