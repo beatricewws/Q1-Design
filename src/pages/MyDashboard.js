@@ -90,7 +90,7 @@ const MyDashboard = () => {
             <h1>Countdown to a new Entry</h1>
             <CountdownBar  />
           </div>
-        <MyCar />
+        <MyCar /><br/>
         </div>
         </Container>      
     </div>
