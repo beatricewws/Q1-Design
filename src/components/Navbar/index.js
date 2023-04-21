@@ -8,7 +8,7 @@ NavBtn,
 NavBtnLink,
 } from './NavbarElements';
 
-const Navbar = ({ handleRouteChange }) => {
+const Navbar = () => {
 
 return (
 	<>
@@ -16,7 +16,7 @@ return (
 		<Bars />
 
 		<NavMenu>
-		<NavLink to='/MyDashboard' onClick={handleRouteChange} activeStyle>
+		<NavLink to='/MyDashboard' activeStyle>
             My Dashboard
 		</NavLink>
 		<NavLink to='/events' activeStyle>
@@ -39,6 +39,9 @@ return (
 		</NavLink>
 		<NavLink to='/sign-up' activeStyle>
             Verify Entry Numbers
+		</NavLink>
+		<NavLink to='/' activeStyle>
+            Back
 		</NavLink>
 		{/* Second Nav */}
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
