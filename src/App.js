@@ -13,25 +13,19 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [hideDiv, setHideDiv] = useState(false);
 
-  const handleRouteChange = () => {
-    setHideDiv(true);
-  };
 
   return (
     <div className="container">
       <Header />
       <Container>
         <Router>
-        <Navbar handleRouteChange={handleRouteChange} />
+        <Navbar />
         <Routes>
+            <Route path='/' element={<MainContent />} />
             <Route path='/MyDashboard' element={<MyDashboard/>} />
         </Routes>  
         </Router>
-        <div className='login'  style={{ display: hideDiv ? 'none' : 'block' }}>
-          <MainContent />
-        </div>
       </Container>
     </div>
   );
