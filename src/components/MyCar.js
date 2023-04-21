@@ -3,15 +3,13 @@ import MyTableCar from './MyTableCar';
 
 function MyCar() {
   const data = [
-    { name: 'John Smith', age: 35, occupation: 'Software Developer' },
-    { name: 'Jane Doe', age: 28, occupation: 'Designer' },
-    { name: 'Bob Johnson', age: 42, occupation: 'Manager' },
+    { photo: 'Ram.png', once: 0, vip: 0, total: 0 },
   ];
 
   return (
     <div>
-      <h1>My Table</h1>
-      <MyTableCar data={data} />
+      <h1>MY CURRENT DRAWS</h1>
+      <MyTableCar title="VIP Only:	Ram 2500 Power Wagon" content="Draw date: 28 April 2023" data={data} />
     </div>
   );
 }
