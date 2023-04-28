@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import styled from 'styled-components';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const TableWrapper = styled.div`
   display: flex;
@@ -60,6 +62,50 @@ const Image = styled.img`
   object-fit: contain;
 `;
 
+const ExpandButton = styled.button`
+  background-color: #E9C656;
+  border: none;
+  color: black;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 16px;
+  &:after {
+    content: "\\25BC";
+    display: block;
+    font-size: 16px;
+    line-height: 0;
+    margin-top: 4px;
+  }
+`;
+
+const ExpandedRow = styled.tr`
+  display: none;
+  &.show {
+    display: table-row;
+  }
+`;
+
+const ExpandedData = styled.td`
+  padding: 8px;
+  text-align: left;
+  white-space: pre-wrap;
+`;
+
+const Modal = styled.div`
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+`;
+
+const PopupWrapper = styled(Popup)`
+  all: unset;
+`;
+
 function MyTableCar(props) {
   return (
     <div>
@@ -81,16 +127,33 @@ function MyTableCar(props) {
                 <TableData><ImageWrapper><Image src={`/${row.photo}`} alt={props.title} /></ImageWrapper></TableData>
                 <TableData>
                   {row.once}<br/>
-                  {row.once > 0 ? row.once :
-                    <Button onClick={() => console.log('Once button clicked')}>Enter Now</Button>
-                  }
+                  <PopupWrapper
+                  trigger={<Button>Enter Now</Button>}
+                  modal
+                  closeOnDocumentClick={false}
+                >
+                  {close => (
+                    <div >
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                      <div >
+                        <h2>Welcome to GFG!!!</h2>
+                      </div>
+                    </div>
+                  )}
+                  </PopupWrapper>
+                  
                 </TableData>
                 <TableData>{row.vip}</TableData>
                 <TableData>{row.total}</TableData>
               </TableRow>
+           
+              
             ))}
           </tbody>
         </Table>
+        <ExpandButton onClick={() => console.log('Expand button clicked')} />
     </TableWrapper>
   </div>
   );
