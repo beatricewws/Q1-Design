@@ -2,6 +2,8 @@ import React, { useState }  from 'react';
 import styled from 'styled-components';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const TableWrapper = styled.div`
   display: flex;
@@ -63,7 +65,7 @@ const Image = styled.img`
 `;
 
 const ExpandButton = styled.button`
-  background-color: #E9C656;
+  background-color: white;
   border: none;
   color: black;
   padding: 8px;
@@ -75,25 +77,11 @@ const ExpandButton = styled.button`
   margin: 0 auto;
   margin-top: 16px;
   &:after {
-    content: "\\25BC";
     display: block;
     font-size: 16px;
     line-height: 0;
     margin-top: 4px;
   }
-`;
-
-const ExpandedRow = styled.tr`
-  display: none;
-  &.show {
-    display: table-row;
-  }
-`;
-
-const ExpandedData = styled.td`
-  padding: 8px;
-  text-align: left;
-  white-space: pre-wrap;
 `;
 
 const Modal = styled.div`
@@ -122,6 +110,9 @@ const Button1 = styled.button`
     props.isSelected ? '3px solid yellow' : 'none'}; // add yellow border if isSelected prop is true
   border-radius: 10px;
   margin: 0 10px;
+  height: 200px;
+  width: 200px;
+  flex: 1;
 `;
 
 const Price = styled.span`
@@ -148,6 +139,12 @@ function MyTableCar(props) {
 
   const handleConfirmClick = () => {
     console.log(`Selected Price: ${selectedButton}`);
+  };
+
+  const [showAdditionalRow, setShowAdditionalRow] = useState(false);
+
+  const handleButtonClick1 = () => {
+    setShowAdditionalRow(!showAdditionalRow);
   };
 
   return (
@@ -181,43 +178,43 @@ function MyTableCar(props) {
                         &times;
                       </button>
                       <div >
-                        <h2>Welcome to GFG!!!</h2>
+                        <h2>Welcome to MCA!!!</h2>
                         <ButtonWrapper>
                         <Button1
                           color="#FC5185"
-                          isSelected={selectedButton === '$10'} // set isSelected prop to true if selectedButton is '$10'
-                          onClick={() => handleButtonClick('$10')}
-                        >
-                          <Price>$10</Price>
-                          <br />
-                          Basic
-                        </Button1>
-                        <Button1
-                          color="#43A047"
-                          isSelected={selectedButton === '$25'} // set isSelected prop to true if selectedButton is '$25'
+                          isSelected={selectedButton === '$25'} // set isSelected prop to true if selectedButton is '$10'
                           onClick={() => handleButtonClick('$25')}
                         >
                           <Price>$25</Price>
                           <br />
-                          Pro
+                          Bronze Level
                         </Button1>
                         <Button1
-                          color="#3D5AFE"
-                          isSelected={selectedButton === '$50'} // set isSelected prop to true if selectedButton is '$50'
-                          onClick={() => handleButtonClick('$50')}
-                        >
-                          <Price>$50</Price>
-                          <br />
-                          Premium
-                        </Button1>
-                        <Button1
-                          color="#FBBF24"
-                          isSelected={selectedButton === '$100'} // set isSelected prop to true if selectedButton is '$100'
+                          color="#43A047"
+                          isSelected={selectedButton === '$100'} // set isSelected prop to true if selectedButton is '$25'
                           onClick={() => handleButtonClick('$100')}
                         >
                           <Price>$100</Price>
                           <br />
-                          Ultimate
+                          Silver Level
+                        </Button1>
+                        <Button1
+                          color="#3D5AFE"
+                          isSelected={selectedButton === '$200'} // set isSelected prop to true if selectedButton is '$50'
+                          onClick={() => handleButtonClick('$200')}
+                        >
+                          <Price>$200</Price>
+                          <br />
+                          Gold Level
+                        </Button1>
+                        <Button1
+                          color="#FBBF24"
+                          isSelected={selectedButton === '$400'} // set isSelected prop to true if selectedButton is '$100'
+                          onClick={() => handleButtonClick('$400')}
+                        >
+                          <Price>$400</Price>
+                          <br />
+                          Diamond Level
                         </Button1>
                       </ButtonWrapper>
                       <ConfirmButton onClick={handleConfirmClick}>Confirm</ConfirmButton>
@@ -234,8 +231,41 @@ function MyTableCar(props) {
               
             ))}
           </tbody>
-        </Table>
-        <ExpandButton onClick={() => console.log('Expand button clicked')} />
+          {!showAdditionalRow && (
+          <TableRow>
+            <TableData colSpan="3">
+              <ExpandButton onClick={handleButtonClick1}>
+                <span>View entry numbers</span><br/>
+                <FontAwesomeIcon icon={faChevronDown} />
+              </ExpandButton>
+            </TableData>
+          </TableRow>
+          )}
+        {showAdditionalRow && (
+        <>
+        <TableRow>
+          <TableData colSpan="1">My entry number</TableData>
+          <TableData colSpan="1">No numbers</TableData>
+        </TableRow>
+        <TableRow>
+          <TableData colSpan="1">Live draw link</TableData>
+          <TableData colSpan="1">Click here</TableData>
+        </TableRow>
+        <TableRow>
+          <TableData colSpan="1">Winner</TableData>
+          <TableData colSpan="1">TBA</TableData>
+        </TableRow>
+        <TableRow>
+              <TableData colSpan="3">
+                <ExpandButton onClick={handleButtonClick1}>
+                  <span>Hide entry numbers</span><br/>
+                  <FontAwesomeIcon icon={faChevronUp} />
+                </ExpandButton>
+              </TableData>
+            </TableRow>
+        </>
+        )}
+        </Table>     
     </TableWrapper>
   </div>
   );
