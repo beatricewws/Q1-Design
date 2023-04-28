@@ -10,6 +10,16 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 16px;
+  width: 100%;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 1200px;
+  }
 `;
 
 const App = () => {
