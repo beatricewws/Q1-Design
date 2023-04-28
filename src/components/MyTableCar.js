@@ -106,7 +106,50 @@ const PopupWrapper = styled(Popup)`
   all: unset;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+`;
+
+const Button1 = styled.button`
+  background-color: ${(props) => props.color};
+  color: #fff;
+  font-size: 24px;
+  padding: 20px;
+  border: ${(props) =>
+    props.isSelected ? '3px solid yellow' : 'none'}; // add yellow border if isSelected prop is true
+  border-radius: 10px;
+  margin: 0 10px;
+`;
+
+const Price = styled.span`
+  font-size: 36px;
+  font-weight: bold;
+`;
+
+const ConfirmButton = styled.button`
+  background-color: #3D5AFE;
+  color: #fff;
+  font-size: 24px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 50px;
+`;
+
 function MyTableCar(props) {
+  const [selectedButton, setSelectedButton] = useState('');
+
+  const handleButtonClick = (price) => {
+    setSelectedButton(price);
+  };
+
+  const handleConfirmClick = () => {
+    console.log(`Selected Price: ${selectedButton}`);
+  };
+
   return (
     <div>
       <h2>{props.title}</h2>
@@ -139,6 +182,45 @@ function MyTableCar(props) {
                       </button>
                       <div >
                         <h2>Welcome to GFG!!!</h2>
+                        <ButtonWrapper>
+                        <Button1
+                          color="#FC5185"
+                          isSelected={selectedButton === '$10'} // set isSelected prop to true if selectedButton is '$10'
+                          onClick={() => handleButtonClick('$10')}
+                        >
+                          <Price>$10</Price>
+                          <br />
+                          Basic
+                        </Button1>
+                        <Button1
+                          color="#43A047"
+                          isSelected={selectedButton === '$25'} // set isSelected prop to true if selectedButton is '$25'
+                          onClick={() => handleButtonClick('$25')}
+                        >
+                          <Price>$25</Price>
+                          <br />
+                          Pro
+                        </Button1>
+                        <Button1
+                          color="#3D5AFE"
+                          isSelected={selectedButton === '$50'} // set isSelected prop to true if selectedButton is '$50'
+                          onClick={() => handleButtonClick('$50')}
+                        >
+                          <Price>$50</Price>
+                          <br />
+                          Premium
+                        </Button1>
+                        <Button1
+                          color="#FBBF24"
+                          isSelected={selectedButton === '$100'} // set isSelected prop to true if selectedButton is '$100'
+                          onClick={() => handleButtonClick('$100')}
+                        >
+                          <Price>$100</Price>
+                          <br />
+                          Ultimate
+                        </Button1>
+                      </ButtonWrapper>
+                      <ConfirmButton onClick={handleConfirmClick}>Confirm</ConfirmButton>
                       </div>
                     </div>
                   )}
