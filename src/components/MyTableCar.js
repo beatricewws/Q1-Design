@@ -16,6 +16,10 @@ const Table = styled.table`
   max-width: 1000px;
   margin: 0 auto;
   border: 1px solid #ddd;
+
+  @media (max-width: 767px) { /* change 767px to your preferred breakpoint */
+    max-width: 100%;
+  }
 `;
 
 const TableHead = styled.thead`
@@ -99,6 +103,12 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+
+  @media only screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
 `;
 
 const Button1 = styled.button`
