@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import MobileNav from './components/MobileNav';
 import Header from './components/Header';
 import MainContent from './pages/MainContent';
 import './App.css';
@@ -23,11 +24,51 @@ const Container = styled.div`
 `;
 
 const App = () => {
+  const [width, setWidth] = useState(window.innerWidth);
 
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
 
-  return (
-    <div className="container">
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 500;
+  
+    if (isMobile) {
+
+    return (
+      <div className="container">
+    <Header />
+    <Router>
+        <MobileNav />
+        <Routes>
+            <Route path='/' element={<MainContent />} />
+            <Route path='/MyDashboard' element={<MyDashboard/>} />
+        </Routes>  
+    </Router>
+      {isMobile ? (
+        null 
+      ) : (
+      <Container>
+        <MainContent />
+      </Container>
+      )}
+  </div>
+    );
+    } else {
+      return (
+        <div className="container">
       <Header />
+      {isMobile ? (
+        <MainContent />
+      ) : (
       <Container>
         <Router>
         <Navbar />
@@ -37,8 +78,10 @@ const App = () => {
         </Routes>  
         </Router>
       </Container>
+      )}
     </div>
-  );
+      );
+    };
 };
 
 export default App;
