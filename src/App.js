@@ -13,13 +13,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  max-width: 1000px;
+  margin: 0;
   padding: 0 16px;
-  width: 100%;
+  width: 100vw;
 
   @media only screen and (min-width: 768px) {
     max-width: 1200px;
+    margin: 0 auto;
   }
 `;
 
@@ -46,6 +46,7 @@ const App = () => {
     return (
       <div className="container">
     <Header />
+   
     <Router>
         <MobileNav />
         <Routes>
@@ -53,12 +54,13 @@ const App = () => {
             <Route path='/MyDashboard' element={<MyDashboard/>} />
         </Routes>  
     </Router>
+    
       {isMobile ? (
         null 
       ) : (
-      <Container>
+    
         <MainContent />
-      </Container>
+      
       )}
   </div>
     );
