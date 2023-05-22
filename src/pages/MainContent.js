@@ -4,7 +4,6 @@ import TextBox from '../components/Textbox.js';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin-left: 200px; /* replace with width of sidebar */
   
   @media only screen and (max-width: 767px) {
     display: flex;
