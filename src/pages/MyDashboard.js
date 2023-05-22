@@ -6,12 +6,13 @@ import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Container = styled.div`
-  margin-left: 200px; /* replace with width of sidebar */
 
-  @media screen and (max-width: 768px) {
-    margin-left: 0;
-    padding: 16px;
-  }
+  @media only screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px; /* Add padding */
+    }
 `;
 
 const RoundRectangle = styled.div`
@@ -29,7 +30,6 @@ const RoundRectangle = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100px;
     margin-right: 0;
     margin-bottom: 10px;
   }
@@ -57,7 +57,6 @@ const RoundRectangle2 = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100px;
     margin-right: 0;
     margin-bottom: 10px;
   }
@@ -80,7 +79,7 @@ const MyDashboard = () => {
 
   return (
       <div className="container">
-        <Container>
+        
         <div className="text"><TextBox />
         <h1>My dashboard</h1>
         <h1>WELCOME BACK, .</h1>
@@ -110,7 +109,7 @@ const MyDashboard = () => {
           </div>
         <MyCar /><br/>
         </div>
-        </Container>      
+           
     </div>
   );
 };
