@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import MyCar from '../components/MyCar.js';
 import TextBox from '../components/Textbox.js';
 import CountdownBar from '../components/CountdownBar.js';
@@ -7,51 +7,69 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Container = styled.div`
   margin-left: 200px; /* replace with width of sidebar */
+
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    padding: 16px;
+  }
 `;
 
-const RoundRectangle = ({ children, color, text, onClick }) => (
-  <div
-    style={{
-      width: "300px",
-      height: "70px",
-      borderRadius: "10px",
-      backgroundColor: color,
-      padding: "20px",
-      display: "inline-block",
-      margin: "10px 0",
-      marginRight: "10px",
-      textAlign: "center",
-      color: "#fff",
-      fontWeight: "bold"
-    }}
-    onClick={onClick}
-  >
+const RoundRectangle = styled.div`
+  width: 300px;
+  height: 70px;
+  border-radius: 10px;
+  background-color: ${props => props.color};
+  padding: 20px;
+  display: inline-block;
+  margin: 10px 0;
+  margin-right: 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+`;
+
+const RoundRectangleComponent = ({ children, color, text, onClick }) => (
+  <RoundRectangle color={color} onClick={onClick}>
     <div>{text}</div>
     {children}
-  </div>
+  </RoundRectangle>
 );
 
-const RoundRectangle2 = ({ children, color, text, onClick }) => (
-  <div
-    style={{
-      width: "300px",
-      height: "200px",
-      borderRadius: "10px",
-      backgroundColor: color,
-      padding: "20px",
-      display: "inline-block",
-      margin: "10px 0",
-      marginRight: "10px",
-      textAlign: "center",
-      color: "#fff",
-      fontWeight: "bold"
-    }}
-    onClick={onClick}
-  >
+const RoundRectangle2 = styled.div`
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: ${props => props.color};
+  padding: 20px;
+  display: inline-block;
+  margin: 10px 0;
+  margin-right: 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+`;
+
+const RoundRectangle2Component = ({ children, color, text, onClick }) => (
+  <RoundRectangle2 color={color} onClick={onClick}>
     <div>{text}</div>
     {children}
-  </div>
+  </RoundRectangle2>
 );
+
 
 const MyDashboard = () => {
   const [showRectangle, setShowRectangle] = useState(false);
@@ -67,17 +85,17 @@ const MyDashboard = () => {
         <h1>My dashboard</h1>
         <h1>WELCOME BACK, .</h1>
           <div>
-            <RoundRectangle color="darkgrey" text="" style={{marginTop: "-50px"}} >
+            <RoundRectangleComponent color="darkgrey" text="" style={{marginTop: "-50px"}} >
               <p>MINI VIP</p>
-            </RoundRectangle><br/>
-            <RoundRectangle color="#E9C656" text="" display="inline-block" onClick={handleCardClick}>
+            </RoundRectangleComponent><br/>
+            <RoundRectangleComponent color="#E9C656" text="" display="inline-block" onClick={handleCardClick}>
               <p>MY CARD</p>
-            </RoundRectangle>
-            <RoundRectangle color="grey" text="" display="inline-block">
+            </RoundRectangleComponent>
+            <RoundRectangleComponent color="grey" text="" display="inline-block">
               <p>REWARD POINTS: 250</p>
-            </RoundRectangle><br/>
+            </RoundRectangleComponent><br/>
             {showRectangle && (
-              <RoundRectangle2
+              <RoundRectangle2Component
                 color="black"
                 style={{ marginTop: "10px" }}
               >
@@ -85,7 +103,7 @@ const MyDashboard = () => {
                 <h2>MCA 235250</h2>
                 <p>EXPIRY DATE On-going</p>
                 <p>MEMBER SINCE 01/01/1970</p>
-              </RoundRectangle2>
+              </RoundRectangle2Component>
             )}
             <h1>Countdown to a new Entry</h1>
             <CountdownBar  />
